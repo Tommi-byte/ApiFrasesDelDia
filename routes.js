@@ -11,6 +11,16 @@ routes.get('/obtener-frases', (req, res) => {
     } )
 })
 
+routes.get('/obtener-frase/:id', (req, res) => {
+    req.getConnection( (err, conn) => {
+        if(err) return res.send(err);
+        conn.query('SELECT * FROM frases WHERE id = ?;', [req.params.id] , (error, rows) => {
+            if(err) return res.send(err);
+            res.json(rows);
+        });
+    } )
+})
+
 routes.post('/agregar-frases', (req, res) => {
     req.getConnection( (err, conn) => {
         if(err) return res.send(err);
@@ -21,7 +31,6 @@ routes.post('/agregar-frases', (req, res) => {
         });
     } )
 })
-
 
 routes.put('/actualizar-frases/:id', (req, res) => {
     req.getConnection( (err, conn) => {
