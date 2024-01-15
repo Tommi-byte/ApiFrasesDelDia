@@ -7,11 +7,11 @@ const routes = require('./routes');
 const app = express();
 app.set('port', process.env.PORT || 9000)
 const dboptions = {
-    host: 'localhost',
+    host: 'bbllm2j0vjqbag4k7rrb-mysql.services.clever-cloud.com',
     port: 3306,
-    user: 'root',
-    password: '',
-    database: 'frasesdeldia'
+    user: 'unpghdu84erzmx9y',
+    password: 'b3sNVfPyLz8m1iPyIkl2',
+    database: 'bbllm2j0vjqbag4k7rrb'
 }
 
 // ------------- MIDDLEWARES -------------------------- //
