@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 const myconn = require('express-myconnection');
+const cors = require('cors');
 
 const routes = require('./routes');
 
@@ -17,7 +18,13 @@ const dboptions = {
 // ------------- MIDDLEWARES -------------------------- //
 app.use(myconn(mysql, dboptions, 'single'));
 app.use(express.json());
-
+app.use(cors());
+// Configurar CORS para permitir solicitudes desde http://localhost:8100
+app.use(cors({
+    origin: 'http://localhost:8100',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+}));
 // ------------- ROUTES -------------------------- //
 app.get('/', (req, res) => {
     res.send('Welcome to my API');
@@ -26,6 +33,6 @@ app.get('/', (req, res) => {
 app.use('/api', routes);
 
 // ------------- Server Running -------------------------- //
-app.listen(app.get('port') , () => {
+app.listen(app.get('port'), () => {
     console.log('El servidor esta corriendo por el puerto', app.get('port'));
-} );
+});
