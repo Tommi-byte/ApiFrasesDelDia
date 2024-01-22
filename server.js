@@ -95,28 +95,27 @@ async function main() {
 
         // ------------- Server Running -------------------------- //
         app.listen(app.get('port'), () => {
-            co
+            console.log('El servidor esta corriendo por el puerto', app.get('port'));
+        });
 
 
 
-            module.exports = routes;
-            console.log('exitosa conexion');
+        module.exports = routes;
+        console.log('exitosa conexion');
 
-            // Cerrar la conexión cuando hayas terminado
-        } catch (error) {
-            console.error('Error al conectar a la base de datos:', error.message);
-        }
+        // Cerrar la conexión cuando hayas terminado
+    } catch (error) {
+        console.error('Error al conectar a la base de datos:', error.message);
     }
+}
 
 main();
 
-    // const dboptions = {
-    //     host: 'aws.connect.psdb.cloud',
-    //     port: 3306,
-    //     user: '7dabj8xmed6ocd5olppr',
-    //     password: 'pscale_pw_OuKd3ETQM3hrpAuMYMYlk30Zlkw0EmT8Iv6rHn8upNw',
-    //     database: 'mysqltest'
-    // }
+// const dboptions = {
+//     host: 'aws.connect.psdb.cloud',
+//     port: 3306,
+//     user: '7dabj8xmed6ocd5olppr',
+//     password: 'pscale_pw_OuKd3ETQM3hrpAuMYMYlk30Zlkw0EmT8Iv6rHn8upNw',
+//     database: 'mysqltest'
+// }
 
-    nsole.log('El servidor esta corriendo por el puerto', app.get('port'));
-});
