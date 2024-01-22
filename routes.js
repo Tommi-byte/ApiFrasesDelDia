@@ -1,6 +1,8 @@
 const express = require('express');
 const routes = express.Router();
 
+
+// MÉTODOS FRASES DEL DIA
 routes.get('/obtener-frases', (req, res) => {
     req.getConnection( (err, conn) => {
         if(err) return res.send(err);
@@ -53,6 +55,19 @@ routes.delete('/eliminar-frases/:id', (req, res) => {
         });
     } )
 })
+
+// MÉTODOS ASIGNATURAS
+routes.get('/obtener-asignaturas', (req, res) => {
+    req.getConnection( (err, conn) => {
+        if(err) return res.send(err);
+        conn.query('SELECT * FROM asignatura;', (error, rows) => {
+            if(err) return res.send(err);
+            res.json(rows);
+        });
+    } )
+})
+
+
 
 
 
