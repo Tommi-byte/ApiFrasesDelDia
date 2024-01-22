@@ -15,6 +15,7 @@ const dboptions = {
     database: 'bbllm2j0vjqbag4k7rrb'
 }
 
+
 // ------------- MIDDLEWARES -------------------------- //
 app.use(myconn(mysql, dboptions, 'single'));
 app.use(express.json());
