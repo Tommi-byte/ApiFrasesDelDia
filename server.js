@@ -8,11 +8,11 @@ const routes = require('./routes');
 const app = express();
 app.set('port', process.env.PORT || 9000)
 const dboptions = {
-    host: 'bbllm2j0vjqbag4k7rrb-mysql.services.clever-cloud.com',
+    host: 'aws.connect.psdb.cloud',
     port: 3306,
-    user: 'unpghdu84erzmx9y',
-    password: 'b3sNVfPyLz8m1iPyIkl2',
-    database: 'bbllm2j0vjqbag4k7rrb'
+    user: '7dabj8xmed6ocd5olppr',
+    password: 'pscale_pw_OuKd3ETQM3hrpAuMYMYlk30Zlkw0EmT8Iv6rHn8upNw',
+    database: 'mysqltest'
 }
 
 // ------------- MIDDLEWARES -------------------------- //
