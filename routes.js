@@ -67,6 +67,17 @@ routes.get('/obtener-asignaturas', (req, res) => {
     } )
 })
 
+routes.get('/obtener-inscripciones/:uid', (req, res) => {
+    req.getConnection( (err, conn) => {
+        if(err) return res.send(err);
+        conn.query('SELECT * FROM inscripciones WHERE estudiante_id = ?;', [req.params.uid] , (error, rows) => {
+            if(err) return res.send(err);
+            res.json(rows);
+        });
+    } )
+})
+
+
 
 routes.get('/obtener-asistencia/:uid', (req, res) => {
     req.getConnection( (err, conn) => {
