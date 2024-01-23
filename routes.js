@@ -68,6 +68,16 @@ routes.get('/obtener-asignaturas', (req, res) => {
 })
 
 
+routes.get('/obtener-asistencia/:uid', (req, res) => {
+    req.getConnection( (err, conn) => {
+        if(err) return res.send(err);
+        conn.query('SELECT * FROM asistencia WHERE uid_estudiante = ?;', [req.params.uid] , (error, rows) => {
+            if(err) return res.send(err);
+            res.json(rows);
+        });
+    } )
+})
+
 
 
 
