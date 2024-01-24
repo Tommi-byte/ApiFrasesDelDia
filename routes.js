@@ -90,6 +90,20 @@ routes.get('/obtener-asistencia/:uid', (req, res) => {
 })
 
 
+routes.get('/obtener-detalle-asignatura/:id', (req, res) => {
+    req.getConnection( (err, conn) => {
+        if(err) return res.send(err);
+        conn.query('SELECT * FROM asignatura WHERE id = ?;', [req.params.id] , (error, rows) => {
+            if(err) return res.send(err);
+            res.json(rows);
+        });
+    } )
+})
+
+
+
+
+
 
 
 module.exports = routes;
