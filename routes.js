@@ -79,10 +79,10 @@ routes.get('/obtener-inscripciones/:uid', (req, res) => {
 
 
 
-routes.get('/obtener-asistencia/:uid', (req, res) => {
+routes.get('/obtener-asistencia/:uid/:idAsignatura', (req, res) => {
     req.getConnection( (err, conn) => {
         if(err) return res.send(err);
-        conn.query('SELECT * FROM asistencia WHERE uid_estudiante = ?;', [req.params.uid] , (error, rows) => {
+        conn.query('SELECT * FROM asistencia WHERE uid_estudiante = ? AND id_asignatura = ? ;', [req.params.uid, req.params.idAsignatura] , (error, rows) => {
             if(err) return res.send(err);
             res.json(rows);
         });
