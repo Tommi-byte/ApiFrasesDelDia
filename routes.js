@@ -34,6 +34,8 @@ routes.post('/agregar-frases', (req, res) => {
     } )
 })
 
+
+
 routes.put('/actualizar-frases/:id', (req, res) => {
     req.getConnection( (err, conn) => {
         if(err) return res.send(err);
@@ -99,6 +101,24 @@ routes.get('/obtener-detalle-asignatura/:id', (req, res) => {
         });
     } )
 })
+
+routes.post('/agregar-asistencia', (req, res) => {
+    req.getConnection( (err, conn) => {
+        if(err) return res.send(err);
+
+        const datosAsistencia = req.body;
+
+        if (!datosAsistencia || !datosAsistencia.fecha || !datosAsistencia.estado ||  !datosAsistencia.uid_estudiante || !datosAsistencia.id_asignatura) {
+            return res.status(400).json({ error: 'Datos de asistencia incompletos' });
+        }
+
+        conn.query('INSERT INTO asistencia set ?;', [req.body] , (error, rows) => {
+            if(err) return res.send(err);
+            res.json(rows);
+        });
+    } )
+})
+
 
 
 
